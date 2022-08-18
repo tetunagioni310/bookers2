@@ -1,4 +1,3 @@
-<main>
   <p id="notice"></p>
   <div class="container px-5 px-sm-0">
     <div class="row">
@@ -10,7 +9,7 @@
       <table class="table table-hover table-inverse">
 
         <thead>
-          <th></th>
+          <th colspan="1"></th>
           <th>Title</th>
           <th>Opinion</th>
           <th colspan="3"></th>
@@ -19,8 +18,14 @@
         <tbody>
           <% @books.each do |book|%>
           <tr>
-            <td></td>
-            <td><%= book.title %></td>
+            <td>
+              <% if current_user.profile_image.attached? %>
+                <%= image_tag current_user.profile_image, size: "80x80" %>
+              <% else %>
+                <%= image_tag 'default-image.jpeg', size: "80x80"%>
+              <% end %>
+            </td>
+            <td><%= link_to book.title, "/books/#{book.id}" %></td>
             <td><%= book.body %></td>
             <td></td>
             <td></td>
@@ -31,4 +36,3 @@
     </div>
     </div>
   </div>
-</main>
