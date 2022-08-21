@@ -5,9 +5,9 @@
     <div class="col-md-3">
       <h2>User info</h2>
       <% if @user.profile_image.attached? %>
-        <%= image_tag @user.profile_image, size: "200x200" %>
+        <%= image_tag @user.get_profile_image(200,200) %>
       <% else %>
-        <%= image_tag 'default-image.jpeg', size: "100x100"%>
+        <%= image_tag 'no_image.jpg', size: "100x100"%>
       <% end %>
       <table class="table">
         <tbody>
@@ -54,9 +54,9 @@
           <tr>
             <td>
               <% if current_user.profile_image.attached? %>
-                <%= image_tag current_user.profile_image, size: "200x200" %>
+                <%= image_tag current_user.get_profile_image(80,80) %>
               <% else %>
-                <%= image_tag 'default-image.jpeg', size: "100x100"%>
+                <%= image_tag 'no_image.jpg', size: "100x100"%>
               <% end %>
               <br><%= link_to @book.user.name, "/users/#{@book.user.id}" %>
             </td>

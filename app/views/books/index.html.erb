@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 <div class="container px-5 px-sm-0">
-   <div>
+   <div id="error_explanation">
    <% if @book.errors.any? %>
     <h3><%= pluralize(@book.errors.count, "error")%> prohibited this obj from being saved:</h3>
     <ul>
@@ -12,6 +12,7 @@
     </ul>
    <% end %>
    </div>
+   
    <div class="row">
     <%= render 'info', book: @book %>
     <div class="col-md-8 offset-md-1">
@@ -32,10 +33,10 @@
           <tr>
             <td>
               <a href="/users/<%= book.user.id %>">
-              <% if current_user.profile_image.attached? %>
-                <%= image_tag current_user.profile_image, size: "80x80" %>
+              <% if book.user.profile_image.attached? %>
+                <%= image_tag book.user.get_profile_image(80,80)  %>
               <% else %>
-                <%= image_tag 'default-image.jpeg', size: "80x80"%>
+                <%= image_tag 'no_image.jpg', size: "80x80"%>
               <% end %>
               </a>
             </td>
