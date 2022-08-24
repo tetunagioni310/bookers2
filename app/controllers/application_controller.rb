@@ -12,6 +12,7 @@ class ApplicationController < ActionController::Base
   def after_sign_out_path_for(resource)
     root_path
   end
+  
 
   private
   # 下記のメソッドではdevise_parameter_sanitizer.permitメソッドを使うことでユーザー登録（sign_up）の際に、ユーザー名（name）のデータ操作を許可しています
