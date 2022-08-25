@@ -11,7 +11,8 @@ class BooksController < ApplicationController
       @books = Book.all
       render 'index'
     end
-  end
+    
+ end
 
   def destroy
     book = Book.find(params[:id])

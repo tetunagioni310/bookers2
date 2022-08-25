@@ -1,5 +1,5 @@
 class UsersController < ApplicationController
-  # before_action :correct_user,   only: [:edit, :update]
+   before_action :correct_user,   only: [:edit, :update]
 
   def index
     @users = User.all
@@ -23,7 +23,7 @@ class UsersController < ApplicationController
       flash[:notice] = "You have updated user successfully."
       redirect_to '/users'
     else
-      render 'edit'
+      render template: "users/#{@user.id}/edit"
     end
   end
 
@@ -33,9 +33,9 @@ class UsersController < ApplicationController
     params.require(:user).permit(:name, %i(profile_image), :introduction)
   end
 
-  # def correct_user
-  #   @user = User.find(params[:id])
-  #   redirect_to(root_path) unless current_user?(@user)
-  # end
+  def correct_user
+    @user = User.find(params[:id])
+    redirect_to user_path(current_user.id) unless current_user?(@user)
+  end
 
 end
