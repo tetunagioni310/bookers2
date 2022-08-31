@@ -9,20 +9,6 @@ class User < ApplicationRecord
   has_many :books,dependent: :destroy
   has_one_attached :profile_image
   
-  # パスワードなしで更新するメソッド
-  def update_without_current_password(params, *options)
-    params.delete(:current_password)
-
-    if params[:password].blank? && params[:password_confirmation].blank?
-      params.delete(:password)
-      params.delete(:password_confirmation)
-    end
-
-    result = update_attributes(params, *options)
-    clean_up_passwords
-    result
-  end
-  
   def get_profile_image(width, height)
   unless profile_image.attached?
     file_path = Rails.root.join('app/assets/images/sample-author1.jpg')

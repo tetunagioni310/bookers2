@@ -1,20 +1,11 @@
-<p id="notice"><%= notice %></p>
 <div class="container px-5 px-sm-0">
-   <div id="error_explanation">
-   <% if @book.errors.any? %>
-    <h3><%= pluralize(@book.errors.count, "error")%> prohibited this obj from being saved:</h3>
-    <ul>
-      <% @book.errors.full_messages.each do |message| %>
-        <li>
-         <%= message %>
-        </li>
-      <% end %>
-    </ul>
-   <% end %>
-   </div>
    
+   <%= render 'shared/error_messages', collection: @book,as: 'book' %>
+
    <div class="row">
-    <%= render 'info', book: @book %>
+
+    <%= render 'shared/info', book: @book, user: current_user %>
+
     <div class="col-md-8 offset-md-1">
       <h2>Books</h2>
       <table class="table table-hover table-inverse">
