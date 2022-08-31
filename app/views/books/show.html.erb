@@ -9,11 +9,7 @@
         <tbody>
           <tr>
             <td>
-              <% if current_user.profile_image.attached? %>
-                <%= image_tag current_user.get_profile_image(80,80) %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', size: "100x100"%>
-              <% end %>
+              <%= image_tag current_user.get_profile_image(80,80) %>
               <br><%= link_to @book.user.name, "/users/#{@book.user.id}" %>
             </td>
             <td><%= link_to @book.title, "/books/#{@book.id}" %></td>

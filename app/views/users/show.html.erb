@@ -19,11 +19,7 @@
           <tr>
             <td>
               <a href="/users/<%= book.user.id %>">
-              <% if book.user.profile_image.attached? %>
                 <%= image_tag book.user.get_profile_image(80,80) %>
-              <% else %>
-                <%= image_tag 'no_image.jpg', size: "80x80"%>
-              <% end %>
               </a>
             </td>
             <td><%= link_to book.title, "/books/#{book.id}" %></td>
